@@ -116,7 +116,7 @@ FROM bankchurn.churn_staging;
 -- The max balance is $250898.09, the minimum balance is $0, the average balance is $76485.89
 
 SELECT 
-	MAX(EstimatedSalary) AS max_EstimatedSalary,
+    MAX(EstimatedSalary) AS max_EstimatedSalary,
     MIN(EstimatedSalary) AS min_EstimatedSalary,
     ROUND(AVG(EstimatedSalary), 2) AS avg_EstimatedSalary
 FROM bankchurn.churn_staging;
@@ -160,9 +160,9 @@ Order BY Geography;
 
 -- What percentage of customers churned vs. those who retained?
 SELECT Exited, 
-		ROUND(100 * COUNT(Exited) /
+       ROUND(100 * COUNT(Exited) /
         (SELECT COUNT(*) AS total_count
-		FROM bankchurn.churn_staging), 2) AS Percentage
+	FROM bankchurn.churn_staging), 2) AS Percentage
 FROM bankchurn.churn_staging
 GROUP BY Exited;
 -- The churned percentage is 20.37%, the retained percentage is 79.63%
@@ -174,7 +174,7 @@ GROUP BY NumOfProducts;
 
 -- What are the minimum, maximum, and average credit scores by country?
 SELECT Geography, 
-	   MIN(CreditScore) AS min_CreditScore, 
+       MIN(CreditScore) AS min_CreditScore, 
        MAX(CreditScore) AS max_CreditScore, 
        ROUND(AVG(CreditScore), 2) AS avg_CreditScore
 FROM bankchurn.churn_staging
@@ -207,10 +207,10 @@ GROUP BY Gender, Exited;
 -- How many churned customers fall within different age brackets (e.g., under 20, 20-30, etc.)?
 SELECT 
 CASE
-	WHEN Age < 20 THEN "Under 20"
+    WHEN Age < 20 THEN "Under 20"
     WHEN Age BETWEEN 20 AND 30 THEN "20-30"
     WHEN Age BETWEEN 31 AND 40 THEN "31-40"
-	WHEN Age BETWEEN 41 AND 50 THEN "41-50"
+    WHEN Age BETWEEN 41 AND 50 THEN "41-50"
     ELSE "Over 50"
 END AS Age_group,
 COUNT(Exited) AS Churned_num
@@ -222,7 +222,7 @@ ORDER BY Age_group;
 -- Who are the top 5 customers with the highest credit scores in each country among active members?
 WITH Customer_score AS(
  SELECT CustomerID, 
-		Surname, 
+	Surname, 
         CreditScore, 
         Geography,
         ROW_NUMBER() OVER (
@@ -232,7 +232,7 @@ FROM bankchurn.churn_staging
 WHERE IsActiveMember = 1
 )
 SELECT CustomerID, 
-		Surname, 
+	Surname, 
         CreditScore, 
         Geography
 FROM Customer_score
@@ -241,9 +241,9 @@ WHERE Score_rank <= 5;
 -- Analytical SQL Questions
 -- What is the retention rate (percentage of non-churned customers) by country?
 SELECT Geography, 
-	   ROUND(100 * COUNT(Exited) /
+       ROUND(100 * COUNT(Exited) /
         (SELECT COUNT(*) AS total_count
-		FROM bankchurn.churn_staging), 2) AS Percentage
+	FROM bankchurn.churn_staging), 2) AS Percentage
 FROM bankchurn.churn_staging
 WHERE Exited = 0
 GROUP BY Geography;
@@ -261,7 +261,7 @@ SELECT CustomerId,
 FROM bankchurn.churn_staging
 WHERE Exited = 1
 AND Balance > (SELECT (AVG(Balance) + 2 * STDDEV(Balance)) AS Limits
-				FROM bankchurn.churn_staging);
+	       FROM bankchurn.churn_staging);
 
 -- What is the average number of products for churned customers compared to retained ones?
 SELECT Exited, ROUND(AVG(NumOfProducts)) AS Avg_products
@@ -272,9 +272,8 @@ GROUP BY Exited;
 -- What are the patterns in churn rates by different factors like country, age bracket, and tenure?
 -- what is the churn rate by country
 SELECT Geography,
-	   ROUND(100 * COUNT(*) / (SELECT COUNT(*) AS Total
-							   FROM bankchurn.churn_staging),
-			2) AS Percentage
+       ROUND(100 * COUNT(*) / (SELECT COUNT(*) AS Total
+	   			FROM bankchurn.churn_staging), 2) AS Percentage
 FROM bankchurn.churn_staging
 WHERE Exited = 1
 GROUP BY Geography;
@@ -283,15 +282,14 @@ GROUP BY Geography;
 -- What is the churn rate by age bracket
 SELECT 
 CASE
-	WHEN Age < 20 THEN "Under 20"
+    WHEN Age < 20 THEN "Under 20"
     WHEN Age BETWEEN 20 AND 30 THEN "20-30"
     WHEN Age BETWEEN 31 AND 40 THEN "31-40"
-	WHEN Age BETWEEN 41 AND 50 THEN "41-50"
+    WHEN Age BETWEEN 41 AND 50 THEN "41-50"
     ELSE "Over 50"
 END AS Age_group,
 ROUND(100 * COUNT(*) / (SELECT COUNT(*) AS Total
-					    FROM bankchurn.churn_staging),
-	  2) AS Percentage
+			FROM bankchurn.churn_staging), 2) AS Percentage
 FROM bankchurn.churn_staging
 WHERE Exited = 1
 GROUP BY Age_group
@@ -302,8 +300,7 @@ ORDER BY Percentage;
 -- What is the churn rate by Tenure
 SELECT Tenure,
 	   ROUND(100 * COUNT(*) / (SELECT COUNT(*) AS Total
-							   FROM bankchurn.churn_staging),
-			2) AS Percentage
+				  FROM bankchurn.churn_staging), 2) AS Percentage
 FROM bankchurn.churn_staging
 WHERE Exited = 1
 GROUP BY Tenure
