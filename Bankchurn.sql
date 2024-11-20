@@ -96,7 +96,7 @@ FROM bankchurn.churn_staging;
 -- 10000 rows returns, same as the whole dataset, means all CustomerID is unique
 
 SELECT 
-	MAX(Age) AS max_age,
+    MAX(Age) AS max_age,
     MIN(Age) AS min_age
 FROM bankchurn.churn_staging;
 -- max_age is 92, min_age is 18 and it is in proper age range
@@ -109,7 +109,7 @@ FROM bankchurn.churn_staging;
 -- max_tenure is 10 years, while min_tenure is 0 years, and average tenure is 5 years
 
 SELECT 
-	MAX(Balance) AS max_Balance,
+    MAX(Balance) AS max_Balance,
     MIN(Balance) AS min_Balance,
     ROUND(AVG(Balance), 2) AS avg_Balance
 FROM bankchurn.churn_staging;
@@ -198,9 +198,9 @@ FROM bankchurn.churn_staging;
 
 -- What is the average and standard deviation of balance, segmented by gender and churn status?
 SELECT Gender, 
-	   Exited, 
+       Exited, 
        ROUND(AVG(Balance), 2) AS Avg_balance,
-	   ROUND(STD(Balance), 2) AS Std_balance
+       ROUND(STD(Balance), 2) AS Std_balance
 FROM bankchurn.churn_staging
 GROUP BY Gender, Exited;
 
@@ -299,7 +299,7 @@ ORDER BY Percentage;
 
 -- What is the churn rate by Tenure
 SELECT Tenure,
-	   ROUND(100 * COUNT(*) / (SELECT COUNT(*) AS Total
+       ROUND(100 * COUNT(*) / (SELECT COUNT(*) AS Total
 				  FROM bankchurn.churn_staging), 2) AS Percentage
 FROM bankchurn.churn_staging
 WHERE Exited = 1
