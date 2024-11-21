@@ -29,4 +29,5 @@ This project showcases an in-depth analysis of a Global Customer Churn Dataset u
 * Average balance for churned customers is significantly higher than for retained ones.
 * Active members without credit cards were identified as a potential segment for product cross-selling.
 
+## About Me:
 
