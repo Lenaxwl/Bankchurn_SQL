@@ -30,4 +30,12 @@ This project showcases an in-depth analysis of a Global Customer Churn Dataset u
 * Active members without credit cards were identified as a potential segment for product cross-selling.
 
 ## About Me:
-
+I recently graduated with a Graduate Diploma in Information Sciences from Massey University, where I developed a strong foundation in data analysis, business intelligence, and programming. Throughout my studies, I have gained hands-on experience with SQL, data visualization tools like Microsoft Power BI, statistical programming languages such as R, and data analytical programming such as Python.\
+I have worked on several projects demonstrating my ability to analyze complex datasets, clean and transform data, and provide actionable insights. One of my key projects involved analyzing customer churn using SQL, where I applied advanced techniques like window functions and CTEs to extract valuable insights. I also developed an interactive business intelligence report using Power BI to analyze sales data for a multinational grocery chain.\
+My technical skills include:\
+SQL (MySQL, PostgreSQL)\
+Microsoft Power BI (Data modeling, report building, visualization)\
+R (dplyr, shiny, ggplot, tm, tidyr)\
+Python (Pandas, NumPy, SciPy, Matplotlib)\
+Excel (VLookup, Pivot Tables, Conditional Formatting)\
+I am passionate about using data to solve problems and improve business decision-making. I am now looking for an entry-level data analyst or business intelligence role where I can apply my skills and continue to grow as a professional.
