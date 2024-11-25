@@ -1,5 +1,5 @@
 # Bankchurn_SQL
-Clean and explore the bank customer churn dataset in SQL Server.
+Clean and explore the bank customer churn dataset in MySQL.
 
 ## Overview
 This project showcases an in-depth analysis of a Global Customer Churn Dataset using SQL. The dataset includes customer profiles such as demographics, product interactions, and banking behaviors, which provide a comprehensive foundation for exploring patterns in customer churn. By implementing various SQL techniques, this project demonstrates the ability to clean, analyze, and extract actionable insights from data, offering value for customer retention strategies.\
